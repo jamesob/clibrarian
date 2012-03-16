@@ -6,7 +6,7 @@ An excuse for me to play with CoffeeScript.
 
 ## Install
 
-0. Have `npm` installed.
+0. Have `npm` and `mongodb` installed.
 1. `git clone git@github.com:jamesob/clibrarian.git && cd clibrarian`
 2. `npm install -d`
 3. `coffee server.coffee`
