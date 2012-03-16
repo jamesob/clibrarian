@@ -11,6 +11,7 @@ An excuse for me to play with CoffeeScript.
 2. `npm install -d`
 3. `coffee server.coffee`
 4. Use (with the help of your fav HTTP client):
+
 ```sh
 broderick ~ $ http POST http://localhost:3000/command command='make'
 HTTP/1.1 200 OK
