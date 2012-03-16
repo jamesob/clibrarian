@@ -10,7 +10,8 @@ An excuse for me to play with CoffeeScript.
 1. `git clone git@github.com:jamesob/clibrarian.git && cd clibrarian`
 2. `npm install -d`
 3. `coffee server.coffee`
-4. Use (with the help of your fav HTTP client):
+4. Use (with the help of [your fav HTTP
+client](https://github.com/jkbr/httpie)):
 
 ```sh
 broderick ~ $ http POST http://localhost:3000/command command='make'
