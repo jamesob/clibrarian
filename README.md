@@ -7,7 +7,7 @@ An excuse for me to play with CoffeeScript.
 ## Install
 
 0. Have `npm` installed.
-1. `git clone [this] && cd [this]`
+1. `git clone git@github.com:jamesob/clibrarian.git && cd clibrarian`
 2. `npm install -d`
 3. `coffee server.coffee`
 4. Use (with the help of your fav HTTP client):
