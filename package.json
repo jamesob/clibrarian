@@ -1,0 +1,11 @@
+{
+  "name": "clibrarian",
+  "version": "0.1.0",
+  "description": "CLI call-counts over REST",
+  "author": "jamesob <james.obeirne@gmail.com>",
+  "dependencies": {
+    "express": "2.5.x",
+    "coffee-script": "1.2.x",
+    "mongoose": "2.5.x"
+  }
+}
