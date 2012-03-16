@@ -10,14 +10,13 @@
 express  = require('express')
 mongoose = require 'mongoose'
 app      = express.createServer()
-Schema   = mongoose.Schema
 
-app.use express.bodyParser()
 db = mongoose.connect('mongodb://localhost/clibrarian')
+app.use express.bodyParser()
 
 
 makeCommandSchema = ->
-    new Schema
+    new mongoose.Schema
         command: String
         count: Number
 
@@ -39,10 +38,7 @@ app.post '/command', (req, res) ->
     cmd = req.body.command
 
     upsertCommand(cmd)
-    replyCallback = (err, doc) ->
-        res.json
-            command: doc.command
-            numSeen: doc.count
+    replyCallback = (err, doc) -> res.json doc
 
     Command.findOne({ command: cmd }, replyCallback)
 
