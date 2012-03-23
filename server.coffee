@@ -10,7 +10,8 @@
 express  = require 'express'
 mongoose = require 'mongoose'
 app      = express.createServer()
-
+ 
+CMD_ENDPOINT = '/command'
 pr = console.log
 db = mongoose.connect 'mongodb://localhost/clibrarian'
 app.use express.bodyParser()
@@ -35,15 +36,17 @@ upsertCommand = (cmd) ->
     Command.update cond, count, opts, back
 
 
-app.get '/command', (req, res) ->
-    Command.find {}, (err, docs) -> res.json docs
+app.get CMD_ENDPOINT, (req, res) ->
+    Command.find {}, (err, docs) ->
+        res.json docs
 
 
-app.post '/command', (req, res) ->
+app.post CMD_ENDPOINT, (req, res) ->
     cmd = req.body.command
 
     upsertCommand(cmd)
-    replyCallback = (err, doc) -> res.json doc
+    replyCallback = (err, doc) ->
+        res.json doc
 
     Command.findOne({ command: cmd }, replyCallback)
 
