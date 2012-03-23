@@ -7,11 +7,12 @@
 # matt.might.net/articles/console-hacks-exploiting-frequency/
 #
 
-express  = require('express')
+express  = require 'express'
 mongoose = require 'mongoose'
 app      = express.createServer()
 
-db = mongoose.connect('mongodb://localhost/clibrarian')
+pr = console.log
+db = mongoose.connect 'mongodb://localhost/clibrarian'
 app.use express.bodyParser()
 
 
@@ -20,7 +21,7 @@ makeCommandSchema = ->
         command: String
         count: Number
 
-Command = mongoose.model('Command', makeCommandSchema())
+Command = mongoose.model 'Command', makeCommandSchema()
 
 
 upsertCommand = (cmd) ->
@@ -29,9 +30,13 @@ upsertCommand = (cmd) ->
     count = $inc: { count: 1 }
 
     back = (err, num) ->
-        console.log "Updated '#{cmd}'."
+        pr "Updated '#{cmd}'."
     
-    Command.update(cond, count, opts, back)
+    Command.update cond, count, opts, back
+
+
+app.get '/command', (req, res) ->
+    Command.find {}, (err, docs) -> res.json docs
 
 
 app.post '/command', (req, res) ->
@@ -44,5 +49,7 @@ app.post '/command', (req, res) ->
 
 
 app.listen 3000
-console.log("Express server listening on port"
-            " #{app.address().port} in #{app.settings.env} mode")
+port = app.address().port
+env = app.settings.env
+
+pr "Express server listening on port #{port} in #{env} mode"
